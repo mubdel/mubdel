@@ -28,10 +28,12 @@ pub fn Login() -> Element {
 
             div {
                 class: "login__box",
-                h4 { "Login In" }
 
                 div {
                     class: "login-box",
+
+                    h4 { "Login In" }
+
                     div {
                         class: "login-box__email",
                         label { "Email or Username" }

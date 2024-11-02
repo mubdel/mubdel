@@ -1,0 +1,42 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+
+  &__header {
+    display: flex;
+
+    &--logo {
+      flex: 1;
+    }
+  }
+
+  &__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+.login-box {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 0.5rem;
+  padding: 3rem 6rem;
+  display: flex;
+  flex-direction: column;
+
+  & div {
+    display: flex;
+    flex-direction: column;
+
+    & label {
+      padding: 1rem 0rem;
+    }
+
+    & input {
+      margin-bottom: 1.5rem;
+    }
+  }
+}

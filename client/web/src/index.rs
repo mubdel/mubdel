@@ -15,6 +15,8 @@ pub enum Route {
 
 pub fn web() -> Element {
     rsx! {
+        style { {include_str!("../assets/main.css")} }
+
         Router::<Route> {}
     }
 }
