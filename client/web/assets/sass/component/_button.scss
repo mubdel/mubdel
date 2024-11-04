@@ -1,0 +1,16 @@
+.btn-primary {
+  appearance: none;
+  background-color: $color-primary;
+  color: white;
+  border: 1px solid $color-border-primary;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  padding: 1rem 0rem;
+}
+
+.btn-primary:hover {
+  background-color: $color-primary-hover-dark;
+  cursor: pointer;
+  transition-duration: 0.1s;
+}

@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 #[component]
-fn Home() -> Element {
+pub fn Home() -> Element {
     rsx! {
         div {
             class: "login",

@@ -3,7 +3,6 @@
   flex-direction: column;
   height: 100vh;
 
-
   &__header {
     display: flex;
 
@@ -23,20 +22,48 @@
 .login-box {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 0.5rem;
-  padding: 3rem 6rem;
+  padding: 6rem 6rem;
   display: flex;
   flex-direction: column;
+  font-size: 1.25rem;
+  width: 40rem;
 
-  & div {
+  & h4 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-family: 'Aller Bold';
+  }
+
+  &>div {
     display: flex;
     flex-direction: column;
 
-    & label {
-      padding: 1rem 0rem;
+    &>label {
+      padding: 0.5rem 0rem;
     }
 
-    & input {
+    &>input {
       margin-bottom: 1.5rem;
+      padding: 0.5rem 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid $color-border-primary;
+    }
+  }
+
+  &__password {
+    &--forget {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &>a {
+        color: $color-primary;
+      }
+
+      &>label {
+        flex: 1;
+        padding: 0.5rem 0rem;
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 
+use crate::forget_password::ForgetPassword;
 use crate::login::Login;
 use crate::signup::Signup;
 
@@ -11,13 +12,18 @@ pub enum Route {
     Login {},
     #[route("/signup")]
     Signup {},
+    #[route("/forget_password")]
+    ForgetPassword {},
 }
 
 pub fn web() -> Element {
     rsx! {
         style { {include_str!("../assets/main.css")} }
 
-        Router::<Route> {}
+        div {
+            class: "root rst-a",
+            Router::<Route> {}
+        }
     }
 }
 

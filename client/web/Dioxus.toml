@@ -9,16 +9,19 @@ title = "Mubdel"
 
 [web.watcher]
 reload_html = true
-watch_path = ["src", "assets"]
+watch_path = [
+  "src",
+  "assets",
+]
 
 [web.resource]
 style = [
-  "assets/main.css"
+  "assets/main.css",
 ]
 script = []
 
 [web.resource.dev]
 style = [
-  "assets/main.css"
+  "assets/main.css",
 ]
 script = []

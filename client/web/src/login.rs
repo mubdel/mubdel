@@ -32,7 +32,7 @@ pub fn Login() -> Element {
                 div {
                     class: "login-box",
 
-                    h4 { "Login In" }
+                    h4 { "Login" }
 
                     div {
                         class: "login-box__email",
@@ -42,17 +42,22 @@ pub fn Login() -> Element {
 
                     div {
                         class: "login-box__password",
-                        label { "Password" }
+                        div {
+                            class: "login-box__password--forget",
+                            label { "Password" }
+                            Link {
+                                to: Route::ForgetPassword {},
+                                div {
+                                    "Forget your password?"
+                                }
+                            }
+                        }
                         input {}
                     }
 
                     button {
+                        class: "btn-primary",
                         "Login"
-                    }
-
-                    div {
-                        class: "login-box__forget",
-                        "Forget password?"
                     }
                 }
             }
