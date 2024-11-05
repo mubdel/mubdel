@@ -1,0 +1,41 @@
+.header {
+  background-image: linear-gradient(9deg, white 34%, #eeeeee 100%);
+
+  &__navbar {
+    display: flex;
+
+    &--logo {
+      flex: 1;
+    }
+
+    &--links {
+      display: flex;
+    }
+  }
+
+  &__join {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    & h1 {
+      background-image: linear-gradient(to right, $color-gray-primary, black 100%);
+      background-clip: text;
+      color: transparent;
+    }
+
+    &--links {
+      button {
+        padding: 1rem 2rem;
+        margin: 2.5rem 1rem;
+      }
+    }
+  }
+}
+
+.features {
+  background-color: $color-white-primary;
+  height: 50rem;
+}

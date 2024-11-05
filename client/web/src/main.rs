@@ -2,6 +2,7 @@ use dioxus::prelude::*;
 
 use crate::index::web;
 
+pub mod cards;
 pub mod forget_password;
 pub mod home;
 pub mod index;

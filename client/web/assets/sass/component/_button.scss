@@ -7,10 +7,40 @@
   box-sizing: border-box;
   transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
   padding: 1rem 0rem;
+
+  & a {
+    color: white;
+  }
 }
 
 .btn-primary:hover {
   background-color: $color-primary-hover-dark;
   cursor: pointer;
   transition-duration: 0.1s;
+}
+
+.btn-secondary {
+  appearance: none;
+  background-color: white;
+  color: black;
+  border: 1px solid $color-border-primary;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  padding: 1rem 0rem;
+
+  & a {
+    color: black;
+  }
+}
+
+.btn-secondary:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition-duration: 0.1s;
+
+  & a {
+    color: white;
+  }
 }
