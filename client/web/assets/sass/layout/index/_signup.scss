@@ -1,4 +1,4 @@
-.login {
+.signup {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -19,7 +19,7 @@
   }
 }
 
-.login-box {
+.signup-box {
   box-shadow: $shadow-primary;
   border-radius: 0.5rem;
   padding: 6rem 6rem;
@@ -47,23 +47,6 @@
       padding: 0.5rem 0.5rem;
       border-radius: 0.5rem;
       border: 1px solid $color-border-primary;
-    }
-  }
-
-  &__password {
-    &--forget {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      &>a {
-        color: $color-primary;
-      }
-
-      &>label {
-        flex: 1;
-        padding: 0.5rem 0rem;
-      }
     }
   }
 }

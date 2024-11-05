@@ -16,7 +16,6 @@ pub fn Login() -> Element {
                         div { "Mubdel" }
                     }
                 }
-
                 div {
                     class: "login__header--signup",
                     Link {
@@ -25,21 +24,16 @@ pub fn Login() -> Element {
                     }
                 }
             }
-
             div {
                 class: "login__box",
-
                 div {
                     class: "login-box",
-
                     h4 { "Login" }
-
                     div {
                         class: "login-box__email",
                         label { "Email or Username" }
                         input {}
                     }
-
                     div {
                         class: "login-box__password",
                         div {
@@ -54,7 +48,6 @@ pub fn Login() -> Element {
                         }
                         input {}
                     }
-
                     button {
                         class: "btn-primary",
                         "Login"
