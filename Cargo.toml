@@ -16,3 +16,5 @@ edition = "2021"
 solana-sdk = "2.1.0"
 solana-client = "2.1.0"
 anyhow = "1.0.92"
+dioxus = { version = "0.5", features = ["web", "router"] }
+manganis = "0.2.2"
