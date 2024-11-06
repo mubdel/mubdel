@@ -24,14 +24,49 @@
       background-image: linear-gradient(to right, $color-gray-primary, black 100%);
       background-clip: text;
       color: transparent;
+      animation-name: moveItUp;
+      animation-duration: 1s;
     }
 
     &--links {
+      animation-name: moveItDown;
+      animation-duration: 2s;
+
       button {
         padding: 1rem 2rem;
         margin: 2.5rem 1rem;
       }
     }
+  }
+}
+
+@keyframes moveItUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  80% {}
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveItDown {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
   }
 }
 
