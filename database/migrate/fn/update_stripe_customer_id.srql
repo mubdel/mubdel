@@ -1,0 +1,8 @@
+DEFINE FUNCTION fn::update_stripe_customer_id(
+	$user_id: record,
+	$customer_id: string,
+) {
+	RETURN UPDATE user SET stripe_customer_id = $customer_id
+		WHERE id = $user_id
+		RETURN *;
+}

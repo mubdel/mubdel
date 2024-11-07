@@ -1,0 +1,14 @@
+[package]
+name = "email"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+
+[dependencies]
+lettre = { workspace = true }
+handlebars = { workspace = true }
+anyhow = { workspace = true }
+serde_json = { workspace = true }
+
+cfg = { workspace = true }

@@ -1,0 +1,13 @@
+[package]
+name = "ty"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+
+[dependencies]
+async-graphql = { workspace = true }
+serde = { workspace = true }
+surrealdb = { workspace = true }
+chrono = { workspace = true }
+poem = { workspace = true }

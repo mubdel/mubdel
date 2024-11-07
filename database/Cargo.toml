@@ -1,0 +1,13 @@
+[package]
+name = "database"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+
+[dependencies]
+surrealdb = { workspace = true }
+anyhow = { workspace = true }
+
+cfg = { workspace = true }
+ty = { workspace = true }

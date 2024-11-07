@@ -1,0 +1,5 @@
+DEFINE FUNCTION fn::get_user(
+	$id: string,
+) {
+	RETURN SELECT * FROM <record> $id;
+}

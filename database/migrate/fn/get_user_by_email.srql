@@ -1,0 +1,5 @@
+DEFINE FUNCTION fn::get_user_by_email(
+	$email: string,
+) {
+	RETURN SELECT * FROM user WHERE email = $email;
+}

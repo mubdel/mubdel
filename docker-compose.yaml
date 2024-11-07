@@ -1,0 +1,126 @@
+services:
+  user:
+    container_name: mubdel-user
+    build:
+      context: .
+      dockerfile: user/Dockerfile
+    ports:
+      - 4001:4001
+    depends_on:
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+      loki:
+        condition: service_healthy
+
+  auth:
+    container_name: mubdel-auth
+    build:
+      context: .
+      dockerfile: auth/Dockerfile
+    volumes:
+      - ./errors/messages.ftl:/usr/local/src/fluent
+    ports:
+      - 4002:4002
+    depends_on:
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+      loki:
+        condition: service_healthy
+
+  database:
+    container_name: mubdel-database
+    build:
+      context: database
+      dockerfile: Dockerfile
+    volumes:
+      - ./database/migrate:/root/migrate
+    ports:
+      - 8000:8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+  cache:
+    container_name: mubdel-cache
+    build:
+      context: cache
+      dockerfile: Dockerfile
+    volumes:
+      - ./cache/migrate:/root/migrate
+    ports:
+      - 8100:8100
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8100"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+  loki:
+    container_name: mubdel-loki
+    build:
+      context: .
+      dockerfile: docker/loki/Dockerfile
+    ports:
+      - 3100:3100
+    depends_on:
+      grafana:
+        condition: service_healthy
+    healthcheck:
+      test: wget --quiet --tries=1 --output-document=- http://localhost:3100/ready | grep -q -w ready || exit 1
+      start_period: 20s
+      interval: 10s
+      timeout: 3s
+      retries: 12
+
+  grafana:
+    image: grafana/grafana
+    container_name: mubdel-grafana
+    environment:
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+    volumes:
+      - ./docker/grafana:/etc/grafana/provisioning/
+    entrypoint:
+      - /run.sh
+    ports:
+      - 3000:3000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+     
+  payment:
+    container_name: mubdel-payment
+    build:
+      context: .
+      dockerfile: payment/Dockerfile
+    ports:
+      - 4003:4003
+    depends_on:
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+      loki:
+        condition: service_healthy
+
+  crypto-flow:
+    container_name: mubdel-crypto-flow
+    build:
+      context: .
+      dockerfile: crypto-flow/Dockerfile
+    ports:
+      - 40004:4004
+    depends_on:
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+      loki:
+        condition: service_healthy

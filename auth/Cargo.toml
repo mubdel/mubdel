@@ -1,0 +1,20 @@
+[package]
+name = "auth"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+
+[dependencies]
+clap = { workspace = true }
+async-graphql = { workspace = true }
+bcrypt = { workspace = true }
+chrono = { workspace = true }
+tokio = { workspace = true }
+surrealdb = { workspace = true }
+poem = { workspace = true }
+
+ty = { workspace = true }
+helper = { workspace = true }
+errors = { workspace = true }
+startup = { workspace = true }

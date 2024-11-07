@@ -1,0 +1,18 @@
+[package]
+name = "payment"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+
+[dependencies]
+clap = { workspace = true }
+async-graphql = { workspace = true }
+tokio = { workspace = true }
+poem = { workspace = true }
+
+startup = { workspace = true }
+helper = { workspace = true }
+ty = { workspace = true }
+payment-gate = { workspace = true }
+errors = { workspace = true }

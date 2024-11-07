@@ -1,0 +1,5 @@
+DEFINE FUNCTION fn::get_user_by_username(
+	$username: string,
+) {
+	RETURN SELECT * FROM user WHERE username = $username;
+}

@@ -1,0 +1,15 @@
+[package]
+name = "errors"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+
+[dependencies]
+fluent = { workspace = true }
+fluent-bundle = { workspace = true }
+unic-langid = { workspace = true }
+intl-memoizer = { workspace = true }
+async-graphql = { workspace = true }
+
+error-macros = { workspace = true }

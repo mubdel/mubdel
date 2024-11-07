@@ -1,0 +1,17 @@
+[package]
+name = "helper"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+
+[dependencies]
+async-graphql = { workspace = true }
+rand = { workspace = true }
+poem = { workspace = true }
+
+database = { workspace = true }
+errors = { workspace = true }
+cache = { workspace = true }
+ty = { workspace = true }
+payment-gate = { workspace = true }

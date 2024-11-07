@@ -1,0 +1,24 @@
+[package]
+name = "startup"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+
+[dependencies]
+async-graphql = { workspace = true }
+poem = { workspace = true }
+async-graphql-poem = { workspace = true }
+tokio = { workspace = true }
+surrealdb = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+tracing-loki = { workspace = true }
+
+ty = { workspace = true }
+cfg = { workspace = true }
+database = { workspace = true }
+errors = { workspace = true }
+cache = { workspace = true }
+middleware = { workspace = true }
+payment-gate = { workspace = true }

@@ -1,0 +1,31 @@
+[crypto-flow]
+service = 4004
+
+[database]
+addr = 'database:8000'
+username = 'root'
+password = 'root'
+namespace = 'mubdel'
+name = 'mubdel'
+
+[cache]
+addr = 'cache:8100'
+username = 'root'
+password = 'root'
+namespace = 'mubdel'
+name = 'mubdel'
+
+[fluent]
+fluent_path = '/usr/local/src/fluent'
+
+[email]
+templates_path='/usr/local/src/templates'
+
+[email.aws]
+smtp_server = ''
+username = ''
+password = ''
+from = 'noreply@mubdel.com'
+
+[loki]
+url = 'http://loki:3100'

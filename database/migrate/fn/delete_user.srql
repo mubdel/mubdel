@@ -1,0 +1,7 @@
+DEFINE FUNCTION fn::delete_user(
+	$user_id: record,
+) {
+	RETURN UPDATE user SET deleted_at = time::now(), status = 'Deleted'
+		WHERE id = $user_id
+		RETURN *;
+}

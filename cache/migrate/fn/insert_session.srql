@@ -1,0 +1,11 @@
+DEFINE FUNCTION fn::insert_session(
+	$secret: string,
+	$user: string,
+	$expires_on: datetime,
+) {
+	RETURN CREATE session CONTENT {
+		secret: $secret,
+		user: $user,
+		expires_on: $expires_on,
+	};
+}

@@ -1,0 +1,13 @@
+DEFINE FUNCTION fn::insert_user(
+	$name: string,
+	$username: string,
+	$email: string,
+	$password: string,
+) {
+	RETURN CREATE user CONTENT {
+		name: $name,
+		username: $username,
+		email: $email,
+		password: $password,
+	};
+}
