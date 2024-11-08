@@ -1,0 +1,11 @@
+pub mod about;
+pub mod bug_bounty;
+pub mod cards;
+pub mod cookies_policy;
+pub mod fees;
+pub mod forget_password;
+pub mod index;
+pub mod login;
+pub mod mobile;
+pub mod privacy_policy;
+pub mod signup;

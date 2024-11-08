@@ -1,52 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::about::About;
-use crate::bug_bounty::BugBounty;
-use crate::cards::Cards;
-use crate::cookies_policy::CookiesPolicy;
-use crate::fees::Fees;
-use crate::forget_password::ForgetPassword;
-use crate::login::Login;
-use crate::mobile::Mobile;
-use crate::privacy_policy::PrivacyPolicy;
-use crate::signup::Signup;
-
-#[derive(Clone, Routable, Debug, PartialEq)]
-pub enum Route {
-    #[route("/")]
-    Index {},
-    #[route("/login")]
-    Login {},
-    #[route("/signup")]
-    Signup {},
-    #[route("/forget-password")]
-    ForgetPassword {},
-    #[route("/cards")]
-    Cards {},
-    #[route("/bug-bounty")]
-    BugBounty {},
-    #[route("/mobile")]
-    Mobile {},
-    #[route("/about")]
-    About {},
-    #[route("/fees")]
-    Fees {},
-    #[route("/privacy-policy")]
-    PrivacyPolicy {},
-    #[route("/cookies-policy")]
-    CookiesPolicy {},
-}
-
-pub fn web() -> Element {
-    rsx! {
-        style { {include_str!("../assets/main.css")} }
-
-        div {
-            class: "root rst-a",
-            Router::<Route> {}
-        }
-    }
-}
+use crate::router::Route;
 
 #[component]
 pub fn Index() -> Element {

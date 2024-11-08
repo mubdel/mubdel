@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::index::Route;
+use crate::router::Route;
 
 #[component]
 pub fn Login() -> Element {

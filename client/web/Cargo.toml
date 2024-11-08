@@ -10,3 +10,6 @@ edition.workspace = true
 [dependencies]
 dioxus = { workspace = true }
 manganis = { workspace = true }
+gql_client = { workspace = true }
+serde = { workspace = true }
+anyhow = { workspace = true }
