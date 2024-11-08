@@ -9082,10 +9082,12 @@ name = "web"
 version = "0.0.1"
 dependencies = [
  "anyhow",
+ "async-graphql",
  "dioxus",
  "gql_client",
  "manganis",
  "serde",
+ "ty",
 ]
 
 [[package]]

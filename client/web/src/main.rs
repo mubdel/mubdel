@@ -1,3 +1,5 @@
+#![allow(clippy::redundant_closure)]
+
 use dioxus::prelude::*;
 
 use crate::router::web;
