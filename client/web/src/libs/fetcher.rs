@@ -7,7 +7,7 @@ use serde::{Deserialize, Deserializer, Serialize};
 
 const BASE_URL: &str = "http://localhost:4001";
 
-pub async fn fetch<'a, T, D>(query: &str, vars: T) -> Result<D>
+pub async fn fetch<T, D>(query: &str, vars: T) -> Result<D>
 where
     T: Serialize,
     for<'de> D: Deserialize<'de>,
