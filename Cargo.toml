@@ -53,6 +53,7 @@ async-graphql-poem = "7.0.11"
 tracing-loki = "0.2.5"
 tracing-subscriber = "0.3.18"
 gql_client = "1.0.7"
+dioxus-logger = "0.5.1"
 
 auth = { path = "auth", version = "0.0.1" }
 cache = { path = "cache", version = "0.0.1" }

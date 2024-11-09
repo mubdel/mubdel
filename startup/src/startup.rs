@@ -1,5 +1,7 @@
 use async_graphql::{ObjectType, Result, Schema, SubscriptionType};
-use poem::{listener::TcpListener, post, EndpointExt, Route, Server};
+use poem::{
+    http::Method, listener::TcpListener, middleware::Cors, post, EndpointExt, Route, Server,
+};
 use tracing::info;
 use tracing_loki::url::Url;
 use tracing_subscriber::layer::SubscriberExt;
@@ -67,14 +69,24 @@ where
 
         let service_cfg = self.cfg.service();
 
-        let app = Route::new().at(
-            "/",
-            post(self.handler)
-                .around(authenticator)
-                .data(schema)
-                .data(db)
-                .data(cache),
-        );
+        let cors = Cors::new()
+            .allow_origin("https://mubdel.com")
+            .allow_origin("http://localhost:4005")
+            .allow_origin("http://localhost:8080")
+            .allow_method(Method::POST)
+            .allow_headers(vec!["Authorization", "Content-Type"])
+            .max_age(3600);
+
+        let app = Route::new()
+            .at(
+                "/",
+                post(self.handler)
+                    .around(authenticator)
+                    .data(schema)
+                    .data(db)
+                    .data(cache),
+            )
+            .with(cors);
 
         info!("server running on :{}", service_cfg.port);
 

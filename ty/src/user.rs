@@ -15,7 +15,7 @@ pub struct User {
     pub name: Option<String>,
     pub username: String,
     pub email: String,
-    #[graphql(skip_output)]
+    #[graphql(skip_output, secret)]
     pub password: String,
     #[graphql(skip)]
     pub status: UserStatus,

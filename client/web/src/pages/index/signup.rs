@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use serde::{Deserialize, Serialize};
 
-use crate::libs::fetcher::{fetch, Data};
+use crate::libs::fetcher::fetch;
 use crate::router::Route;
 
 #[component]
@@ -59,6 +59,7 @@ pub fn Signup() -> Element {
                         class: "signup-box__password",
                         label { "Password" }
                         input {
+                            r#type: "password",
                             value: "{user.read().password}",
                             oninput: move |e| {
                                 user.write().password = e.value();
@@ -70,7 +71,7 @@ pub fn Signup() -> Element {
                         onclick: move |_| {
                             let _ = use_resource(move || async move {
                                 let vars = user.read().clone();
-                                fetch::<Vars, Data<User>>(SIGNUP_QUERY, vars.clone()).await
+                                fetch::<Vars, Register>(SIGNUP_QUERY, vars.clone()).await
                             });
                         },
                         "Signup"
@@ -87,11 +88,11 @@ mutation SignupQuery(
     $username: String!,
     $password: String!,
 ) {
-    register(
+    register(user: {
         email: $email,
         username: $username,
         password: $password,
-    ) {
+    }) {
         id
     }
 }
@@ -101,11 +102,15 @@ mutation SignupQuery(
 struct Vars {
     pub email: String,
     pub username: String,
-    pub name: String,
     pub password: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
+pub struct Register {
+    pub register: User,
+}
+
+#[derive(Debug, Deserialize)]
 pub struct User {
     pub id: String,
 }

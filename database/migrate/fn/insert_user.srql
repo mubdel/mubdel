@@ -1,5 +1,5 @@
 DEFINE FUNCTION fn::insert_user(
-	$name: string,
+	$name: option<string>,
 	$username: string,
 	$email: string,
 	$password: string,
