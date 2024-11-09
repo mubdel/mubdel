@@ -14,5 +14,3 @@ gql_client = { workspace = true }
 serde = { workspace = true }
 anyhow = { workspace = true }
 async-graphql = { workspace = true }
-
-ty = { workspace = true }

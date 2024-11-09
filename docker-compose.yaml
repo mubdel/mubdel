@@ -124,3 +124,20 @@ services:
         condition: service_healthy
       loki:
         condition: service_healthy
+
+  web:
+    container_name: mubdel-web
+    build:
+      context: .
+      dockerfile: web-server/Dockerfile
+    ports:
+      - 4005:4005
+    environment:
+      - WEB_CLIENT_PATH=/var/web
+    depends_on:
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+      loki:
+        condition: service_healthy

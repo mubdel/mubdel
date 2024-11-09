@@ -4840,9 +4840,11 @@ dependencies = [
  "headers",
  "http 1.1.0",
  "http-body-util",
+ "httpdate",
  "hyper 1.5.0",
  "hyper-util",
  "mime",
+ "mime_guess",
  "nix",
  "parking_lot",
  "percent-encoding",
@@ -9087,7 +9089,17 @@ dependencies = [
  "gql_client",
  "manganis",
  "serde",
- "ty",
+]
+
+[[package]]
+name = "web-server"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "poem",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]

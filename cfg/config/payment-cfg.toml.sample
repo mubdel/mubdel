@@ -1,5 +1,5 @@
-[payment]
-service = 4003
+[service]
+port = 4003
 
 [payment_gate]
 stripe_secret = ''

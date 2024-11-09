@@ -1,7 +1,5 @@
 use dioxus::prelude::*;
-use serde::Serialize;
-
-use ty::user::User;
+use serde::{Deserialize, Serialize};
 
 use crate::libs::fetcher::{fetch, Data};
 use crate::router::Route;
@@ -70,8 +68,10 @@ pub fn Signup() -> Element {
                     button {
                         class: "signup-box__button btn-primary",
                         onclick: move |_| {
-                            let vars = user.read().clone();
-                            let _ = use_resource(move || fetch::<Vars, Data<User>>(SIGNUP_QUERY, vars.clone()));
+                            let _ = use_resource(move || async move {
+                                let vars = user.read().clone();
+                                fetch::<Vars, Data<User>>(SIGNUP_QUERY, vars.clone()).await
+                            });
                         },
                         "Signup"
                     }
@@ -103,4 +103,9 @@ struct Vars {
     pub username: String,
     pub name: String,
     pub password: String,
+}
+
+#[derive(Deserialize)]
+pub struct User {
+    pub id: String,
 }
