@@ -6,11 +6,11 @@ use crate::pages::index::cards::Cards;
 use crate::pages::index::cookies_policy::CookiesPolicy;
 use crate::pages::index::fees::Fees;
 use crate::pages::index::forget_password::ForgetPassword;
-use crate::pages::index::index::Index;
 use crate::pages::index::login::Login;
 use crate::pages::index::mobile::Mobile;
 use crate::pages::index::privacy_policy::PrivacyPolicy;
 use crate::pages::index::signup::Signup;
+use crate::pages::index::Index;
 
 #[derive(Clone, Routable, Debug, PartialEq)]
 #[rustfmt::skip]
