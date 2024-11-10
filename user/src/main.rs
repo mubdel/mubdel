@@ -4,11 +4,11 @@ use clap::Parser;
 use startup::startup::Startup;
 use ty::service::Service;
 
-use crate::hander::graphql_handler;
+use crate::handler::graphql_handler;
 use crate::mutation::RootMutation;
 use crate::query::RootQuery;
 
-mod hander;
+mod handler;
 mod mutation;
 mod query;
 
