@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use serde::{Deserialize, Serialize};
 
-use crate::libs::fetcher::fetch;
+use crate::libs::fetcher::{fetch, Service};
 use crate::router::Route;
 
 #[component]
@@ -71,7 +71,7 @@ pub fn Signup() -> Element {
                         onclick: move |_| {
                             let _ = use_resource(move || async move {
                                 let vars = user.read().clone();
-                                fetch::<Vars, Register>(SIGNUP_QUERY, vars.clone()).await
+                                fetch::<Vars, Register>(SIGNUP_QUERY, vars.clone(), Service::User).await
                             });
                         },
                         "Signup"

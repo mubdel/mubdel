@@ -2,14 +2,35 @@ use anyhow::{Error, Result};
 use gql_client::Client;
 use serde::{Deserialize, Serialize};
 
-const BASE_URL: &str = "http://localhost:4001";
+// FIXME: Use federation gate (gqlgate)
+pub enum Service {
+    User,
+    Auth,
+    Payment,
+    CryptoFlow,
+    Card,
+}
 
-pub async fn fetch<V, D>(query: &str, vars: V) -> Result<D>
+const USER_BASE_URL: &str = "http://localhost:4001";
+const AUTH_BASE_URL: &str = "http://localhost:4002";
+const PAYMENT_BASE_URL: &str = "http://localhost:4003";
+const CRYPTO_FLOW_BASE_URL: &str = "http://localhost:4004";
+const CARD_BASE_URL: &str = "http://localhost:4006";
+
+pub async fn fetch<V, D>(query: &str, vars: V, service: Service) -> Result<D>
 where
     V: Serialize,
     for<'de> D: Deserialize<'de>,
 {
-    let client = Client::new(BASE_URL);
+    let url = match service {
+        Service::User => USER_BASE_URL,
+        Service::Auth => AUTH_BASE_URL,
+        Service::Payment => PAYMENT_BASE_URL,
+        Service::CryptoFlow => CRYPTO_FLOW_BASE_URL,
+        Service::Card => CARD_BASE_URL,
+    };
+
+    let client = Client::new(url);
     client
         .query_with_vars_unwrap::<D, V>(query, vars)
         .await
