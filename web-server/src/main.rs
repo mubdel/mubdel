@@ -1,7 +1,11 @@
 use std::env::var;
 
 use anyhow::Result;
-use poem::{endpoint::StaticFilesEndpoint, listener::TcpListener, Route, Server};
+use poem::{listener::TcpListener, Route, Server};
+
+use crate::spa::SPAEndpoint;
+
+pub mod spa;
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -17,9 +21,7 @@ async fn main() -> Result<()> {
 
     let app = Route::new().nest(
         "/",
-        StaticFilesEndpoint::new(var("WEB_CLIENT_PATH")?)
-            .show_files_listing()
-            .index_file("index.html"),
+        SPAEndpoint::new(var("WEB_CLIENT_PATH")?, "index.html").with_assets("assets"),
     );
 
     Server::new(TcpListener::bind("0.0.0.0:4005"))

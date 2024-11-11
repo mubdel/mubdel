@@ -9119,6 +9119,7 @@ name = "web-server"
 version = "0.0.1"
 dependencies = [
  "anyhow",
+ "percent-encoding",
  "poem",
  "tokio",
  "tracing",
