@@ -19,6 +19,7 @@ pub fn Index() -> Element {
     const YOUTUBE_LOGO: &str = manganis::mg!(file("./assets/img/youtube.svg"));
     const LINKEDIN_LOGO: &str = manganis::mg!(file("./assets/img/linkedin.svg"));
     const INSTAGRAM_LOGO: &str = manganis::mg!(file("./assets/img/instagram.svg"));
+    const TELEGRAM_LOGO: &str = manganis::mg!(file("./assets/img/telegram.svg"));
 
     rsx! {
         div {
@@ -129,6 +130,16 @@ pub fn Index() -> Element {
                             div {
                                 img { src: LINKEDIN_LOGO }
                                 span { "LinkedIn" }
+                            }
+                        }
+                    }
+                    div {
+                        class: "footer__item--object",
+                        Link {
+                            to: "https://t.me/mubdel",
+                            div {
+                                img { src: TELEGRAM_LOGO }
+                                span { "Telegram" }
                             }
                         }
                     }
