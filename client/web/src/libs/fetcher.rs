@@ -1,4 +1,5 @@
 use anyhow::{Error, Result};
+use dioxus_logger::tracing::error;
 use gql_client::Client;
 use serde::{Deserialize, Serialize};
 
@@ -34,5 +35,8 @@ where
     client
         .query_with_vars_unwrap::<D, V>(query, vars)
         .await
-        .map_err(|e| Error::msg(format!("fetch gql error: {}", e)))
+        .map_err(|e| {
+            error!("{}", e);
+            Error::msg(format!("{}", e))
+        })
 }
