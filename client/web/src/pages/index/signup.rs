@@ -9,8 +9,9 @@ use crate::router::Route;
 #[component]
 pub fn Signup() -> Element {
     let mut user = use_signal(|| Vars::default());
-
     let mut error = use_signal(|| None);
+    let mut signed_up = use_signal(|| false);
+    let mut email = use_signal(|| String::new());
 
     let signup: Coroutine<()> = use_coroutine(|mut rx| async move {
         while let Some(_) = rx.next().await {
@@ -18,6 +19,9 @@ pub fn Signup() -> Element {
             let r = fetch::<Vars, Register>(SIGNUP_QUERY, vars.clone(), Service::User).await;
             if r.is_err() {
                 error.set(Some("Could not sign up".to_string()));
+            } else {
+                email.set(user.read().email.clone());
+                signed_up.set(true);
             }
         }
     });
@@ -25,6 +29,41 @@ pub fn Signup() -> Element {
     let handle_signup = move |_| {
         signup.send(());
     };
+
+    let handle_resend = move |_| {
+        // TODO
+    };
+
+    if *signed_up.read() {
+        const EMAIL: &str = manganis::mg!(file("./assets/img/email.svg"));
+
+        return rsx! {
+            div {
+                class: "confirm-email",
+                img {
+                    src: EMAIL,
+                }
+                div {
+                    class: "confirm-email__title",
+                    "Check your inbox"
+                }
+                div {
+                    class: "confirm-email__text",
+                    "We've sent an email to {email} with"
+                    br {}
+                    "your sign up confirmation."
+                }
+                div {
+                    class: "confirm-email__resend",
+                    div { "Not received the email?" }
+                    div {
+                        onclick: handle_resend,
+                        "Resend confirmation"
+                    }
+                }
+            }
+        };
+    }
 
     rsx! {
         div {
