@@ -14,3 +14,8 @@ gql_client = { workspace = true }
 serde = { workspace = true }
 anyhow = { workspace = true }
 dioxus-logger = { workspace = true }
+futures-util = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+async-std = "1.13.0"
+instant = {version = "0.1.13", features = ["wasm-bindgen"]}

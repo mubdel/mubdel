@@ -116,7 +116,7 @@
 
     &--object:hover {
       & img {
-        filter: invert(14%) sepia(89%) saturate(5502%) hue-rotate(314deg) brightness(102%) contrast(108%);
+        filter: $filter-color-primary;
       }
 
       & a {

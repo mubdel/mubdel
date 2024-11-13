@@ -1,12 +1,30 @@
 use dioxus::prelude::*;
+use futures_util::stream::StreamExt;
 use serde::{Deserialize, Serialize};
 
+use crate::components::modal::ErrorModal;
 use crate::libs::fetcher::{fetch, Service};
 use crate::router::Route;
 
 #[component]
 pub fn Signup() -> Element {
     let mut user = use_signal(|| Vars::default());
+
+    let mut error = use_signal(|| None);
+
+    let signup: Coroutine<()> = use_coroutine(|mut rx| async move {
+        while let Some(_) = rx.next().await {
+            let vars = user.read().clone();
+            let r = fetch::<Vars, Register>(SIGNUP_QUERY, vars.clone(), Service::User).await;
+            if r.is_err() {
+                error.set(Some("Could not sign up".to_string()));
+            }
+        }
+    });
+
+    let handle_signup = move |_| {
+        signup.send(());
+    };
 
     rsx! {
         div {
@@ -68,15 +86,13 @@ pub fn Signup() -> Element {
                     }
                     button {
                         class: "signup-box__button btn-primary",
-                        onclick: move |_| {
-                            let _ = use_resource(move || async move {
-                                let vars = user.read().clone();
-                                fetch::<Vars, Register>(SIGNUP_QUERY, vars.clone(), Service::User).await
-                            });
-                        },
+                        onclick: handle_signup,
                         "Signup"
                     }
                 }
+            }
+            ErrorModal {
+                err: error
             }
         }
     }
