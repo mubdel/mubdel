@@ -9229,6 +9229,7 @@ dependencies = [
  "instant",
  "manganis",
  "serde",
+ "tokio",
 ]
 
 [[package]]

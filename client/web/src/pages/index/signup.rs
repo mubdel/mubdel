@@ -14,7 +14,7 @@ pub fn Signup() -> Element {
     let mut email = use_signal(|| String::new());
 
     let signup: Coroutine<()> = use_coroutine(|mut rx| async move {
-        while let Some(_) = rx.next().await {
+        while (rx.next().await).is_some() {
             let vars = user.read().clone();
             let r = fetch::<Vars, Register>(SIGNUP_QUERY, vars.clone(), Service::User).await;
             if r.is_err() {
