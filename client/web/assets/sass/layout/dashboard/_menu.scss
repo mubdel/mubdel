@@ -1,11 +1,22 @@
 .menu {
   width: 15vw;
   padding: 0.5rem 1rem;
+  border-right: 1px solid $color-gray-primary;
 
   &__link {
+    padding: 0.5rem;
+
     & a {
       display: flex;
       align-items: center;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      color: black;
+    }
+
+    & a:hover {
+      background-color: #eeeeee; // FIXME
+      border-radius: 0.25rem;
     }
 
     &--image {
@@ -19,5 +30,15 @@
     &--text {
       margin: 0.5rem;
     }
+  }
+}
+
+.menu-selected {
+  & a {
+    color: $color-primary;
+  }
+
+  & img {
+    filter: $filter-color-primary;
   }
 }

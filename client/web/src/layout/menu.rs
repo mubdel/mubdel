@@ -15,7 +15,7 @@ pub fn Menu() -> Element {
         div {
             class: "menu",
             div {
-                class: "menu__link",
+                class: "menu__link menu-selected",
                 Link {
                     to: Route::Index {},
                     div {
