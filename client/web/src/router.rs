@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 
+use crate::pages::dashboard::wallets::Wallets;
 use crate::pages::index::about::About;
 use crate::pages::index::bug_bounty::BugBounty;
 use crate::pages::index::cards::Cards;
@@ -15,6 +16,7 @@ use crate::pages::index::Index;
 #[derive(Clone, Routable, Debug, PartialEq)]
 #[rustfmt::skip]
 pub enum Route {
+    // Index
     #[route("/")]
     Index {},
     #[route("/login")]
@@ -37,6 +39,10 @@ pub enum Route {
     PrivacyPolicy {},
     #[route("/cookies-policy")]
     CookiesPolicy {},
+
+    // Dashboard
+    #[route("/wallets")]
+    Wallets {},
 }
 
 pub fn web() -> Element {

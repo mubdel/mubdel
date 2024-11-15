@@ -1,11 +1,11 @@
 use dioxus::prelude::*;
 
 #[component]
-pub fn Home() -> Element {
+pub fn Menu() -> Element {
     rsx! {
         div {
-            class: "home",
-            div { "Home" }
+            class: "menu",
+            div { "Menu" }
         }
     }
 }
