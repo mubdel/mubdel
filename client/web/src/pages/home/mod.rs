@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 pub fn Home() -> Element {
     rsx! {
         div {
-            class: "login",
+            class: "home",
             div { "Home" }
         }
     }

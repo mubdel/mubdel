@@ -1,5 +1,7 @@
 use dioxus::prelude::*;
 
+use crate::libs::storage::is_authenticated;
+use crate::pages::home::Home;
 use crate::router::Route;
 
 pub mod about;
@@ -15,6 +17,12 @@ pub mod signup;
 
 #[component]
 pub fn Index() -> Element {
+    if is_authenticated() {
+        return rsx! {
+            Home {}
+        };
+    }
+
     const X_LOGO: &str = manganis::mg!(file("./assets/img/x.svg"));
     const YOUTUBE_LOGO: &str = manganis::mg!(file("./assets/img/youtube.svg"));
     const LINKEDIN_LOGO: &str = manganis::mg!(file("./assets/img/linkedin.svg"));
