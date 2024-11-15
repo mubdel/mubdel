@@ -1,0 +1,23 @@
+.menu {
+  width: 15vw;
+  padding: 0.5rem 1rem;
+
+  &__link {
+    & a {
+      display: flex;
+      align-items: center;
+    }
+
+    &--image {
+      margin: 0.5rem;
+
+      & img {
+        height: 2rem;
+      }
+    }
+
+    &--text {
+      margin: 0.5rem;
+    }
+  }
+}
