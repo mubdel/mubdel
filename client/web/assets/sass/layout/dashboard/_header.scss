@@ -1,0 +1,25 @@
+.dheader {
+  display: flex;
+  padding: 1rem 1rem;
+  background-color: white;
+  box-shadow: $shadow-box;
+  align-items: center;
+
+  &__logo {
+    flex: 1;
+
+    & img {
+      height: 5rem;
+    }
+  }
+
+  &__buttons {
+    img {
+      height: 2rem;
+    }
+
+    & img:hover {
+      filter: $filter-color-primary;
+    }
+  }
+}

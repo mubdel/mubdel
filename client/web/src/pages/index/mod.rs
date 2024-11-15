@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 use crate::libs::storage::is_authenticated;
-use crate::pages::dashboard::Home;
+use crate::pages::dashboard::home::Home;
 use crate::router::Route;
 
 pub mod about;
