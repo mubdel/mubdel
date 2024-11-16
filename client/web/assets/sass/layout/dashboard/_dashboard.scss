@@ -1,5 +1,5 @@
 .dashboard {
-  background-color: #eeeeee;
+  background-color: $color-secondary;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -14,6 +14,8 @@
 
 .dmain {
   margin: 1rem 3rem;
+  width: 100%;
+  display: flex;
 }
 
 // Not used

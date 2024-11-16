@@ -1,0 +1,69 @@
+.deposit {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  &>h4 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  &__ways {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6rem 12rem;
+  }
+
+  &__table {
+    margin-top: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    &>h4 {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.deposit-way {
+  background-color: $color-secondary;
+  padding: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    background-color: $color-secondary-hover;
+  }
+
+  &__title {
+    font-size: 2rem;
+    color: $color-primary;
+  }
+
+  &__desc {
+    font-size: 1rem;
+    color: black;
+    margin-top: 1rem;
+  }
+}
+
+.deposit-table {
+  background-color: $color-secondary;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  flex-grow: 1;
+  border-radius: 0.5rem;
+
+  &__row {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    cursor: pointer;
+    border-bottom: 1px solid $color-gray-primary;
+    outline: none;
+    padding: 1rem;
+  }
+}
