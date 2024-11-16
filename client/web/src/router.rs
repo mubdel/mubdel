@@ -1,6 +1,9 @@
 use dioxus::prelude::*;
 
+use crate::pages::dashboard::deposit::Deposit;
+use crate::pages::dashboard::transactions::Transactions;
 use crate::pages::dashboard::wallets::Wallets;
+use crate::pages::dashboard::withdrawal::Withdrawal;
 use crate::pages::index::about::About;
 use crate::pages::index::bug_bounty::BugBounty;
 use crate::pages::index::cards::Cards;
@@ -41,8 +44,14 @@ pub enum Route {
     CookiesPolicy {},
 
     // Dashboard
+    #[route("/transactions")]
+    Transactions {},
     #[route("/wallets")]
     Wallets {},
+    #[route("/deposit")]
+    Deposit {},
+    #[route("/withdrawal")]
+    Withdrawal {},
 }
 
 pub fn web() -> Element {

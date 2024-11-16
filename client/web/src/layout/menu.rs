@@ -31,7 +31,7 @@ pub fn Menu() -> Element {
             div {
                 class: "menu__link",
                 Link {
-                    to: Route::Wallets {},
+                    to: Route::Cards {},
                     div {
                         class: "menu__link--image",
                         img { src: CARD }
@@ -45,7 +45,7 @@ pub fn Menu() -> Element {
             div {
                 class: "menu__link",
                 Link {
-                    to: Route::Wallets {},
+                    to: Route::Transactions {},
                     div {
                         class: "menu__link--image",
                         img { src: TRANSACTION }
@@ -73,7 +73,7 @@ pub fn Menu() -> Element {
             div {
                 class: "menu__link",
                 Link {
-                    to: Route::Wallets {},
+                    to: Route::Deposit {},
                     div {
                         class: "menu__link--image",
                         img { src: DEPOSIT }
@@ -87,7 +87,7 @@ pub fn Menu() -> Element {
             div {
                 class: "menu__link",
                 Link {
-                    to: Route::Wallets {},
+                    to: Route::Withdrawal {},
                     div {
                         class: "menu__link--image",
                         img { src: WITHDRAWAL }
