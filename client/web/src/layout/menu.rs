@@ -11,11 +11,22 @@ pub fn Menu() -> Element {
     const DEPOSIT: &str = manganis::mg!(file("./assets/img/deposit.svg"));
     const WITHDRAWAL: &str = manganis::mg!(file("./assets/img/withdrawal.svg"));
 
+    let route: Route = use_route();
+
+    let selected = use_signal(|| match route {
+        Route::Cards {} => "cards",
+        Route::Transactions {} => "transaction",
+        Route::Wallets {} => "wallets",
+        Route::Deposit {} => "deposit",
+        Route::Withdrawal {} => "withdrawal",
+        _ => "home",
+    });
+
     rsx! {
         div {
             class: "menu",
             div {
-                class: "menu__link menu-selected",
+                class: format!("menu__link {}", if *selected.read() == "home" { "menu-selected" } else { "" }),
                 Link {
                     to: Route::Index {},
                     div {
@@ -29,7 +40,7 @@ pub fn Menu() -> Element {
                 }
             }
             div {
-                class: "menu__link",
+                class: format!("menu__link {}", if *selected.read() == "cards" { "menu-selected" } else { "" }),
                 Link {
                     to: Route::Cards {},
                     div {
@@ -43,7 +54,7 @@ pub fn Menu() -> Element {
                 }
             }
             div {
-                class: "menu__link",
+                class: format!("menu__link {}", if *selected.read() == "transaction" { "menu-selected" } else { "" }),
                 Link {
                     to: Route::Transactions {},
                     div {
@@ -57,7 +68,7 @@ pub fn Menu() -> Element {
                 }
             }
             div {
-                class: "menu__link",
+                class: format!("menu__link {}", if *selected.read() == "wallets" { "menu-selected" } else { "" }),
                 Link {
                     to: Route::Wallets {},
                     div {
@@ -71,7 +82,7 @@ pub fn Menu() -> Element {
                 }
             }
             div {
-                class: "menu__link",
+                class: format!("menu__link {}", if *selected.read() == "deposit" { "menu-selected" } else { "" }),
                 Link {
                     to: Route::Deposit {},
                     div {
@@ -85,7 +96,7 @@ pub fn Menu() -> Element {
                 }
             }
             div {
-                class: "menu__link",
+                class: format!("menu__link {}", if *selected.read() == "withdrawal" { "menu-selected" } else { "" }),
                 Link {
                     to: Route::Withdrawal {},
                     div {
