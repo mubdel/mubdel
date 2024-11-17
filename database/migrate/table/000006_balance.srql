@@ -1,0 +1,5 @@
+DEFINE TABLE balance SCHEMAFULL;
+DEFINE FIELD user ON TABLE balance TYPE record<user>;
+DEFINE FIELD coin ON TABLE balance TYPE string;
+DEFINE FIELD amount ON TABLE balance TYPE int;
+DEFINE FIELD created_at ON TABLE balance TYPE datetime DEFAULT time::now();

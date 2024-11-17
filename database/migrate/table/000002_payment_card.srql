@@ -1,4 +1,4 @@
-DEFINE TABLE card SCHEMAFULL;
+DEFINE TABLE payment_card SCHEMAFULL;
 DEFINE FIELD user ON TABLE card TYPE record<user>;
 DEFINE FIELD last_four ON TABLE card TYPE string;
 DEFINE FIELD stripe_id ON TABLE card TYPE string;

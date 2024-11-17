@@ -1,0 +1,5 @@
+DEFINE TABLE deposit SCHEMAFULL;
+DEFINE FIELD user ON TABLE deposit TYPE record<user>;
+DEFINE FIELD wallet ON TABLE deposit TYPE record<wallet>;
+DEFINE FIELD amount ON TABLE deposit TYPE int;
+DEFINE FIELD created_at ON TABLE deposit TYPE datetime DEFAULT time::now();
