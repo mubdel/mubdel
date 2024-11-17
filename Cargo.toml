@@ -5,6 +5,7 @@ members = [
   "cfg",
   "client/web",
   "database",
+  "crypto",
   "crypto-flow",
   "error-macros",
   "errors",

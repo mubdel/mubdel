@@ -1,6 +1,6 @@
 use std::str::FromStr;
 
-use crate::crypto::{CryptoCurrency, Wallet};
+use crate::{CryptoCurrency, Wallet};
 
 use anyhow::Result;
 use solana_client::rpc_client::RpcClient;
