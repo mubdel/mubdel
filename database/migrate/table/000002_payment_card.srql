@@ -1,5 +1,5 @@
 DEFINE TABLE payment_card SCHEMAFULL;
-DEFINE FIELD user ON TABLE card TYPE record<user>;
-DEFINE FIELD last_four ON TABLE card TYPE string;
-DEFINE FIELD stripe_id ON TABLE card TYPE string;
-DEFINE FIELD label ON TABLE card TYPE option<string>;
+DEFINE FIELD user ON TABLE payment_card TYPE record<user>;
+DEFINE FIELD last_four ON TABLE payment_card TYPE string;
+DEFINE FIELD stripe_id ON TABLE payment_card TYPE string;
+DEFINE FIELD label ON TABLE payment_card TYPE option<string>;
