@@ -38,4 +38,26 @@ impl RootMutation {
 
         Ok(wallet)
     }
+
+    async fn regenerate_wallet(&self, ctx: &Context<'_>, currency: Currency) -> Result<Wallet> {
+        let role = get_role(ctx)?;
+        let diag = get_diag(ctx)?;
+        let (ok, user_role) = role.is_user();
+        if !ok {
+            gql_err!(diag, errs::Unauthorized {});
+        }
+        let user_id = user_role.unwrap().id;
+
+        let db = get_db(ctx)?;
+
+        let w = crypto::new(currency).create_wallet().await;
+        // FIXME: Encrypt the private key
+        let symbol = currency.symbol().to_string();
+        let wallet = db
+            .crypto_db()
+            .insert_wallet(user_id, symbol, w.public_key, w.private_key)
+            .await?;
+
+        Ok(wallet)
+    }
 }
