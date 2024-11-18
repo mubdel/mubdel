@@ -116,7 +116,7 @@ services:
       context: .
       dockerfile: crypto-flow/Dockerfile
     ports:
-      - 40004:4004
+      - 4004:4004
     depends_on:
       database:
         condition: service_healthy

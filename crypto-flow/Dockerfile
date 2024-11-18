@@ -18,6 +18,6 @@ COPY ./errors/messages.ftl /usr/local/src/fluent
 
 RUN chmod +x /usr/bin/crypto-flow
 
-EXPOSE 4001
+EXPOSE 4004
 
 CMD crypto-flow -c /etc/mubdel/crypto-flow-cfg.toml

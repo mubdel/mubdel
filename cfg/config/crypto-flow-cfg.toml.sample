@@ -1,5 +1,5 @@
-[crypto-flow]
-service = 4004
+[service]
+port = 4004
 
 [database]
 addr = 'database:8000'

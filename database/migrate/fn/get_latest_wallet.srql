@@ -1,0 +1,9 @@
+DEFINE FUNCTION fn::get_latest_wallet(
+	$user: string,
+	$currency: string,
+) {
+	RETURN SELECT * FROM wallet
+		WHERE user = <record<user>> $user and currency = $currency
+		ORDER BY created_at DESC
+		LIMIT 1;
+}

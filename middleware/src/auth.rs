@@ -34,9 +34,9 @@ pub async fn authenticator<E: Endpoint>(next: E, mut req: Request) -> Result<Res
     }
     let cookies = cookies.unwrap();
 
-    let cookie = cookies.get("twn_session");
+    let cookie = cookies.get("mdl_session");
     if cookie.is_none() {
-        info!("`twn_session` cookie not found");
+        info!("`mdl_session` cookie not found");
         auth_next!(req, next);
     }
     let session_secret = cookie.unwrap().to_string();

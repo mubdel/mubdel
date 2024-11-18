@@ -1581,6 +1581,7 @@ dependencies = [
  "anyhow",
  "solana-client",
  "solana-sdk",
+ "ty",
 ]
 
 [[package]]
@@ -1597,6 +1598,18 @@ dependencies = [
 [[package]]
 name = "crypto-flow"
 version = "0.0.1"
+dependencies = [
+ "async-graphql",
+ "clap",
+ "crypto",
+ "errors",
+ "helper",
+ "poem",
+ "startup",
+ "tokio",
+ "tracing",
+ "ty",
+]
 
 [[package]]
 name = "crypto-mac"

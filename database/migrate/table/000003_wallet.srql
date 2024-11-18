@@ -1,6 +1,6 @@
 DEFINE TABLE wallet SCHEMAFULL;
 DEFINE FIELD user ON TABLE wallet TYPE record<user>;
-DEFINE FIELD coin ON TABLE wallet TYPE string;
+DEFINE FIELD currency ON TABLE wallet TYPE string;
 DEFINE FIELD public_address ON TABLE wallet TYPE string;
 DEFINE FIELD private_address ON TABLE wallet TYPE string;
 DEFINE FIELD created_at ON TABLE wallet TYPE datetime DEFAULT time::now();

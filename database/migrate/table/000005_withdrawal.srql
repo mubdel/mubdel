@@ -1,6 +1,6 @@
 DEFINE TABLE withdrawal SCHEMAFULL;
 DEFINE FIELD user ON TABLE withdrawal TYPE record<user>;
-DEFINE FIELD coin ON TABLE withdrawal TYPE string;
+DEFINE FIELD currency ON TABLE withdrawal TYPE string;
 DEFINE FIELD address ON TABLE withdrawal TYPE string;
 DEFINE FIELD amount ON TABLE withdrawal TYPE int;
 DEFINE FIELD created_at ON TABLE withdrawal TYPE datetime DEFAULT time::now();

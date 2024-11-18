@@ -65,6 +65,7 @@ cfg = { path = "cfg", version = "0.0.1" }
 web = { path = "client/web", version = "0.0.1" }
 database = { path = "database", version = "0.0.1" }
 crypto-flow = { path = "crypto-flow", version = "0.0.1" }
+crypto = { path = "crypto", version = "0.0.1" }
 error-macros = { path = "error-macros", version = "0.0.1" }
 errors = { path = "errors", version = "0.0.1" }
 middleware = { path = "middleware", version = "0.0.1" }

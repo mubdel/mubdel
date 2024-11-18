@@ -1,0 +1,13 @@
+DEFINE FUNCTION fn::insert_wallet(
+	$user: string,
+	$currency: string,
+	$public_address: string,
+	$private_address: string,
+) {
+	RETURN CREATE wallet CONTENT {
+		user: <record<user>> $user,
+		currency: $currency,
+		public_address: $public_address,
+		private_address: $private_address,
+	};
+}

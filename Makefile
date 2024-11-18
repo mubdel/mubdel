@@ -9,7 +9,8 @@ build:
 	docker cp ./target/release/user mubdel-user:/usr/bin/
 	docker cp ./target/release/auth mubdel-auth:/usr/bin/
 	docker cp ./target/release/payment mubdel-payment:/usr/bin/
-	docker restart mubdel-auth mubdel-user mubdel-payment
+	docker cp ./target/release/crypto-flow mubdel-crypto-flow:/usr/bin/
+	docker restart mubdel-auth mubdel-user mubdel-payment mubdel-crypto-flow
 	grass client/web/assets/sass/main.scss client/web/assets/main.css
 	cd client/web && dx build --release && cd -
 	docker cp ./client/web/dist mubdel-web:/var/web

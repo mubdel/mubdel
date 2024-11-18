@@ -9,3 +9,5 @@ edition.workspace = true
 solana-sdk = { workspace = true }
 solana-client = { workspace = true }
 anyhow = { workspace = true }
+
+ty = { workspace = true }

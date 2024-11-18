@@ -6,3 +6,14 @@ repository.workspace = true
 edition.workspace = true
 
 [dependencies]
+clap = { workspace = true }
+async-graphql = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }
+poem = { workspace = true }
+
+ty = { workspace = true }
+startup = { workspace = true }
+helper = { workspace = true }
+errors = { workspace = true }
+crypto = { workspace = true }

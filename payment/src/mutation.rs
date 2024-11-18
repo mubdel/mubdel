@@ -13,6 +13,7 @@ pub struct RootMutation;
 #[Object]
 impl RootMutation {
     async fn subscribe(&self, ctx: &Context<'_>, subscribe: Subscribe) -> Result<String> {
+        // FIXME: Make sure is user not guest
         let db = get_db(ctx)?;
         let plan = db.payment_db().get_plan_by_name(subscribe.plan).await?;
 
