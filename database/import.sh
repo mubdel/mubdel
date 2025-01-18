@@ -17,4 +17,9 @@ for file in /root/migrate/fn/*.srql; do
     --endpoint http://localhost:8000 $file
 done
 
+for file in /root/migrate/seed/*.srql; do
+  surreal import -u root -p root --ns mubdel --db mubdel \
+    --endpoint http://localhost:8000 $file
+done
+
 kill $SURREAL_PID

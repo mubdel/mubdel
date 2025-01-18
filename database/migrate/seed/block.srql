@@ -1,0 +1,4 @@
+RETURN CREATE block CONTENT {
+	symbol: "SOL",
+	latest_block: "",
+};

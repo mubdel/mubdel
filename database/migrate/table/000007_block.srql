@@ -1,0 +1,3 @@
+DEFINE TABLE block SCHEMAFULL;
+DEFINE FIELD symbol ON TABLE block TYPE string;
+DEFINE FIELD latest_block ON TABLE block TYPE option<string>;

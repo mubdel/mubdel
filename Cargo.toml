@@ -16,6 +16,7 @@ members = [
   "ty",
   "user",
   "web-server",
+  "settlement",
 ]
 
 resolver = "2"
