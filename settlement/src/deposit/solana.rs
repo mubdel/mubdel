@@ -24,6 +24,8 @@ impl Solana {
 
 impl Depositor for Solana {
     async fn start(&self) {
+        info!("solana depositor started");
+
         loop {
             let crypto_db = self.db.crypto_db();
 
