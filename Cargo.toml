@@ -31,8 +31,8 @@ edition = "2021"
 solana-sdk = "2.1.0"
 solana-client = "2.1.0"
 anyhow = "1.0.92"
-dioxus = { version = "0.5", features = ["web", "router"] }
-manganis = "0.2.2"
+dioxus = { version = "0.6.2", features = ["web", "router"] }
+web-sys = { version = "0.3.77", features = ["Storage"] }
 async-graphql = "7.0.11"
 bcrypt = "0.15.1"
 clap = { version = "4.5.20", features = ["derive"] }
@@ -55,10 +55,8 @@ async-graphql-poem = "7.0.11"
 tracing-loki = "0.2.5"
 tracing-subscriber = "0.3.18"
 gql_client = "1.0.7"
-dioxus-logger = "0.5.1"
 percent-encoding = "2.3.1"
 futures-util = "0.3.31"
-web-sys = "0.3.72"
 
 auth = { path = "auth", version = "0.0.1" }
 cache = { path = "cache", version = "0.0.1" }

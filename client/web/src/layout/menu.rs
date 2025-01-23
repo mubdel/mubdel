@@ -4,12 +4,12 @@ use crate::router::Route;
 
 #[component]
 pub fn Menu() -> Element {
-    const HOME: &str = manganis::mg!(file("./assets/img/home.svg"));
-    const CARD: &str = manganis::mg!(file("./assets/img/card.svg"));
-    const TRANSACTION: &str = manganis::mg!(file("./assets/img/transaction.svg"));
-    const WALLET: &str = manganis::mg!(file("./assets/img/wallet.svg"));
-    const DEPOSIT: &str = manganis::mg!(file("./assets/img/deposit.svg"));
-    const WITHDRAWAL: &str = manganis::mg!(file("./assets/img/withdrawal.svg"));
+    const HOME: Asset = asset!("/assets/img/home.svg");
+    const CARD: Asset = asset!("/assets/img/card.svg");
+    const TRANSACTION: Asset = asset!("/assets/img/transaction.svg");
+    const WALLET: Asset = asset!("/assets/img/wallet.svg");
+    const DEPOSIT: Asset = asset!("/assets/img/deposit.svg");
+    const WITHDRAWAL: Asset = asset!("/assets/img/withdrawal.svg");
 
     let route: Route = use_route();
 
@@ -31,7 +31,7 @@ pub fn Menu() -> Element {
                     to: Route::Index {},
                     div {
                         class: "menu__link--image",
-                        img { src: HOME }
+                        img { src: "{HOME}" }
                     }
                     div {
                         class: "menu__link--text",
@@ -45,7 +45,7 @@ pub fn Menu() -> Element {
                     to: Route::Cards {},
                     div {
                         class: "menu__link--image",
-                        img { src: CARD }
+                        img { src: "{CARD}" }
                     }
                     div {
                         class: "menu__link--text",
@@ -59,7 +59,7 @@ pub fn Menu() -> Element {
                     to: Route::Transactions {},
                     div {
                         class: "menu__link--image",
-                        img { src: TRANSACTION }
+                        img { src: "{TRANSACTION}" }
                     }
                     div {
                         class: "menu__link--text",
@@ -73,7 +73,7 @@ pub fn Menu() -> Element {
                     to: Route::Wallets {},
                     div {
                         class: "menu__link--image",
-                        img { src: WALLET }
+                        img { src: "{WALLET}" }
                     }
                     div {
                         class: "menu__link--text",
@@ -87,7 +87,7 @@ pub fn Menu() -> Element {
                     to: Route::Deposit {},
                     div {
                         class: "menu__link--image",
-                        img { src: DEPOSIT }
+                        img { src: "{DEPOSIT}" }
                     }
                     div {
                         class: "menu__link--text",
@@ -101,7 +101,7 @@ pub fn Menu() -> Element {
                     to: Route::Withdrawal {},
                     div {
                         class: "menu__link--image",
-                        img { src: WITHDRAWAL }
+                        img { src: "{WITHDRAWAL}" }
                     }
                     div {
                         class: "menu__link--text",

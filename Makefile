@@ -13,7 +13,7 @@ build:
 	docker restart mubdel-auth mubdel-user mubdel-payment mubdel-crypto-flow
 	grass client/web/src/sass/main.scss client/web/assets/main.css
 	cd client/web && dx build --release && cd -
-	docker cp ./client/web/dist mubdel-web:/var/web
+	docker cp ./target/dx/web/release/web/public mubdel-web:/var/web
 	docker cp ./target/release/web-server mubdel-web:/usr/bin/
 	docker restart mubdel-web
 

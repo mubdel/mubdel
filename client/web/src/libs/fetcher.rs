@@ -1,7 +1,7 @@
 use anyhow::{Error, Result};
-use dioxus_logger::tracing::error;
 use gql_client::Client;
 use serde::{Deserialize, Serialize};
+use tracing::error;
 
 // FIXME: Use federation gate (gqlgate)
 pub enum Service {

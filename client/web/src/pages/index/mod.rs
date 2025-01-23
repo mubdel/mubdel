@@ -23,11 +23,11 @@ pub fn Index() -> Element {
         };
     }
 
-    const X_LOGO: &str = manganis::mg!(file("./assets/img/x.svg"));
-    const YOUTUBE_LOGO: &str = manganis::mg!(file("./assets/img/youtube.svg"));
-    const LINKEDIN_LOGO: &str = manganis::mg!(file("./assets/img/linkedin.svg"));
-    const INSTAGRAM_LOGO: &str = manganis::mg!(file("./assets/img/instagram.svg"));
-    const TELEGRAM_LOGO: &str = manganis::mg!(file("./assets/img/telegram.svg"));
+    const X_LOGO: Asset = asset!("/assets/img/x.svg");
+    const YOUTUBE_LOGO: Asset = asset!("/assets/img/youtube.svg");
+    const LINKEDIN_LOGO: Asset = asset!("/assets/img/linkedin.svg");
+    const INSTAGRAM_LOGO: Asset = asset!("/assets/img/instagram.svg");
+    const TELEGRAM_LOGO: Asset = asset!("/assets/img/telegram.svg");
 
     rsx! {
         div {
@@ -116,7 +116,7 @@ pub fn Index() -> Element {
                         Link {
                             to: "https://x.com/mubdel",
                             div {
-                                img { src: X_LOGO }
+                                img { src: "{X_LOGO}" }
                                 span { "X" }
                             }
                         }
@@ -126,7 +126,7 @@ pub fn Index() -> Element {
                         Link {
                             to: "https://www.youtube.com/@mubdel_finance",
                             div {
-                                img { src: YOUTUBE_LOGO }
+                                img { src: "{YOUTUBE_LOGO}" }
                                 span { "Youtube" }
                             }
                         }
@@ -136,7 +136,7 @@ pub fn Index() -> Element {
                         Link {
                             to: "https://www.linkedin.com/company/mubdel",
                             div {
-                                img { src: LINKEDIN_LOGO }
+                                img { src: "{LINKEDIN_LOGO}" }
                                 span { "LinkedIn" }
                             }
                         }
@@ -146,7 +146,7 @@ pub fn Index() -> Element {
                         Link {
                             to: "https://t.me/mubdel",
                             div {
-                                img { src: TELEGRAM_LOGO }
+                                img { src: "{TELEGRAM_LOGO}" }
                                 span { "Telegram" }
                             }
                         }
@@ -156,7 +156,7 @@ pub fn Index() -> Element {
                         Link {
                             to: "https://www.instagram.com/mubdel_offical",
                             div {
-                                img { src: INSTAGRAM_LOGO }
+                                img { src: "{INSTAGRAM_LOGO}" }
                                 span { "Instagram" }
                             }
                         }

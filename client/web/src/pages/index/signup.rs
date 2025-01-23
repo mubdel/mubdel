@@ -13,7 +13,7 @@ pub fn Signup() -> Element {
     let mut signed_up = use_signal(|| false);
     let mut email = use_signal(|| String::new());
 
-    let signup: Coroutine<()> = use_coroutine(|mut rx| async move {
+    let signup: Coroutine<()> = use_coroutine(move |mut rx| async move {
         while (rx.next().await).is_some() {
             let vars = user.read().clone();
             let r = fetch::<Vars, Register>(SIGNUP_QUERY, vars.clone(), Service::User).await;
@@ -35,13 +35,13 @@ pub fn Signup() -> Element {
     };
 
     if *signed_up.read() {
-        const EMAIL: &str = manganis::mg!(file("./assets/img/email.svg"));
+        const EMAIL: Asset = asset!("/assets/img/email.svg");
 
         return rsx! {
             div {
                 class: "confirm-email",
                 img {
-                    src: EMAIL,
+                    src: "{EMAIL}",
                 }
                 div {
                     class: "confirm-email__title",

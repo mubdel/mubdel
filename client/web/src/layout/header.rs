@@ -4,8 +4,8 @@ use crate::router::Route;
 
 #[component]
 pub fn Header() -> Element {
-    const LOGO: &str = manganis::mg!(file("./assets/img/logo.svg"));
-    const SETTINGS: &str = manganis::mg!(file("./assets/img/settings.svg"));
+    const LOGO: Asset = asset!("/assets/img/logo.svg");
+    const SETTINGS: Asset = asset!("/assets/img/settings.svg");
 
     rsx! {
         div {
@@ -14,13 +14,13 @@ pub fn Header() -> Element {
                 class: "dheader__logo",
                 Link {
                     to: Route::Index {},
-                    img { src: LOGO }
+                    img { src: "{LOGO}" }
                 }
             }
 
             div {
                 class: "dheader__buttons",
-                img { src: SETTINGS }
+                img { src: "{SETTINGS}" }
             }
         }
     }

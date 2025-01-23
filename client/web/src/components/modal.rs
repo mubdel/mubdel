@@ -18,10 +18,10 @@ pub fn SuccessModal() -> Element {
 #[component]
 pub fn ErrorModal(err: Signal<Option<String>>) -> Element {
     if let Some(msg) = err.clone().read().clone() {
-        const WARNING: &str = manganis::mg!(file("./assets/img/warning.svg"));
-        const WRONG: &str = manganis::mg!(file("./assets/img/wrong.svg"));
+        const WARNING: Asset = asset!("/assets/img/warning.svg");
+        const WRONG: Asset = asset!("/assets/img/wrong.svg");
 
-        let timer: Coroutine<()> = use_coroutine(|mut rx| async move {
+        let timer: Coroutine<()> = use_coroutine(move |mut rx| async move {
             while (rx.next().await).is_some() {
                 sleep(Duration::from_secs(3)).await;
                 err.set(None);
@@ -36,7 +36,7 @@ pub fn ErrorModal(err: Signal<Option<String>>) -> Element {
                     class: "modal__elements",
                     img {
                         class: "modal__elements--warning",
-                        src: WARNING
+                        src: "{WARNING}"
                     }
 
                     h4 { "{msg}" }
@@ -46,7 +46,7 @@ pub fn ErrorModal(err: Signal<Option<String>>) -> Element {
                         onclick: move |_| {
                             err.set(None);
                         },
-                        src: WRONG
+                        src: "{WRONG}"
                     }
                 }
             }
