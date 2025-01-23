@@ -1,4 +1,4 @@
-use deposit::*;
+use depositor::*;
 
-pub mod deposit;
+pub mod depositor;
 pub mod solana;

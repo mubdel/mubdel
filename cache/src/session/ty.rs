@@ -8,7 +8,7 @@ pub struct SessionCache<'a> {
     pub(crate) cache: &'a Surreal<Client>,
 }
 
-impl<'a> SessionCache<'a> {
+impl SessionCache<'_> {
     pub async fn insert_session(&self, session: Session) -> Result<Session> {
         let mut r = self
             .cache

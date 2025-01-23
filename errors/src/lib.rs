@@ -28,7 +28,7 @@ pub struct Err<'a> {
     // TODO: request id, doc_url
 }
 
-impl<'a> Err<'a> {
+impl Err<'_> {
     pub fn to_err(&self) -> Error {
         Error::new(&self.message).extend_with(|_, e| {
             e.set("code", self.code);

@@ -8,7 +8,7 @@ pub struct CryptoDatabase<'a> {
     pub(crate) db: &'a Surreal<Client>,
 }
 
-impl<'a> CryptoDatabase<'a> {
+impl CryptoDatabase<'_> {
     pub async fn insert_wallet(
         &self,
         user: String,

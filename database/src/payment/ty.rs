@@ -8,7 +8,7 @@ pub struct PaymentDatabase<'a> {
     pub(crate) db: &'a Surreal<Client>,
 }
 
-impl<'a> PaymentDatabase<'a> {
+impl PaymentDatabase<'_> {
     pub async fn get_plan_by_name(&self, name: String) -> Result<Plan> {
         let mut r = self
             .db

@@ -7,7 +7,7 @@ pub struct UserDatabase<'a> {
     pub(crate) db: &'a Surreal<Client>,
 }
 
-impl<'a> UserDatabase<'a> {
+impl UserDatabase<'_> {
     pub async fn insert_user(&self, user: User) -> Result<User> {
         let mut r = self
             .db
