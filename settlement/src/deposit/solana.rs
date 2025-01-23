@@ -12,13 +12,13 @@ use crate::deposit::Depositor;
 
 pub struct Solana {
     pub db: DB,
-    pub solana_rpc: RpcClient,
+    pub rpc_client: RpcClient,
 }
 
 impl Solana {
     /// Create new solana depositor worker
-    pub fn new_depositor(db: DB, solana_rpc: RpcClient) -> Self {
-        Self { db, solana_rpc }
+    pub fn new_depositor(db: DB, rpc_client: RpcClient) -> Self {
+        Self { db, rpc_client }
     }
 }
 
@@ -52,7 +52,7 @@ impl Depositor for Solana {
             }
             let latest_block: u64 = r.unwrap();
 
-            let r = self.solana_rpc.get_blocks(latest_block + 1, None);
+            let r = self.rpc_client.get_blocks(latest_block + 1, None);
             if r.is_err() {
                 error!("solana depositor: unable to get blocks: {:?}", r.err());
                 continue;
