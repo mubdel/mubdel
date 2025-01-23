@@ -6294,9 +6294,10 @@ dependencies = [
 name = "settlement"
 version = "0.0.1"
 dependencies = [
- "anyhow",
+ "database",
  "solana-client",
  "solana-sdk",
+ "tracing",
  "ty",
 ]
 

@@ -1,3 +1,4 @@
 DEFINE TABLE block SCHEMAFULL;
-DEFINE FIELD symbol ON TABLE block TYPE string;
+DEFINE FIELD currency ON TABLE block TYPE string;
 DEFINE FIELD latest_block ON TABLE block TYPE option<string>;
+DEFINE FIELD created_at ON TABLE block TYPE datetime DEFAULT time::now();

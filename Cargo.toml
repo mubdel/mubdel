@@ -76,3 +76,15 @@ helper = { path = "helper", version = "0.0.1" }
 startup = { path = "startup", version = "0.0.1" }
 ty = { path = "ty", version = "0.0.1" }
 user = { path = "user", version = "0.0.1" }
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"

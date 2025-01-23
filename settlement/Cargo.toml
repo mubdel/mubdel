@@ -8,6 +8,7 @@ edition.workspace = true
 [dependencies]
 solana-sdk = { workspace = true }
 solana-client = { workspace = true }
-anyhow = { workspace = true }
+tracing = { workspace = true }
 
 ty = { workspace = true }
+database = { workspace = true }

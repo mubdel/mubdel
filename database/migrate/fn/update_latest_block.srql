@@ -1,0 +1,8 @@
+DEFINE FUNCTION fn::update_latest_block(
+	$currency: string,
+	$latest_block: string,
+) {
+	RETURN UPDATE block SET latest_block = $latest_block
+		WHERE currency = $currency
+		RETURN *;
+}

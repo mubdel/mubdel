@@ -1,0 +1,6 @@
+DEFINE FUNCTION fn::get_block(
+	$currency: string,
+) {
+	RETURN SELECT * FROM block
+		WHERE currency = $currency;
+}

@@ -1,4 +1,5 @@
 pub mod auth;
+pub mod block;
 pub mod currency;
 pub mod gql_err;
 pub mod payment;
