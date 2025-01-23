@@ -6030,7 +6030,6 @@ dependencies = [
  "solana-client",
  "solana-sdk",
  "tracing",
- "ty",
 ]
 
 [[package]]

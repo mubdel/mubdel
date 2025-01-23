@@ -15,6 +15,13 @@ pub struct Solana {
     pub solana_rpc: RpcClient,
 }
 
+impl Solana {
+    /// Create new solana depositor worker
+    pub fn new_depositor(db: DB, solana_rpc: RpcClient) -> Self {
+        Self { db, solana_rpc }
+    }
+}
+
 impl Depositor for Solana {
     async fn start(&self) {
         loop {

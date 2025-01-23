@@ -10,5 +10,4 @@ solana-sdk = { workspace = true }
 solana-client = { workspace = true }
 tracing = { workspace = true }
 
-ty = { workspace = true }
 database = { workspace = true }
