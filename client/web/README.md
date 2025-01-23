@@ -1,7 +1,7 @@
 # Development
 
 ```bash
-grass assets/sass/main.scss assets/main.css
+grass src/sass/main.scss assets/main.css
 ```
 
 Run the following command in the root of the project to start the Dioxus dev server:

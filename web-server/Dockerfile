@@ -2,7 +2,7 @@ FROM debian:latest
 
 COPY ./target/release/web-server /usr/bin/
 
-COPY ./client/web/dist /var/web
+COPY ./target/dx/web/release/web/public /var/web
 
 RUN chmod +x /usr/bin/web-server
 

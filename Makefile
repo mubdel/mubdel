@@ -1,6 +1,6 @@
 run:
+	grass client/web/src/sass/main.scss client/web/assets/main.css
 	cargo build --release
-	grass client/web/assets/sass/main.scss client/web/assets/main.css
 	cd client/web && dx build --release && cd -
 	docker compose up --build -d
 
@@ -11,7 +11,7 @@ build:
 	docker cp ./target/release/payment mubdel-payment:/usr/bin/
 	docker cp ./target/release/crypto-flow mubdel-crypto-flow:/usr/bin/
 	docker restart mubdel-auth mubdel-user mubdel-payment mubdel-crypto-flow
-	grass client/web/assets/sass/main.scss client/web/assets/main.css
+	grass client/web/src/sass/main.scss client/web/assets/main.css
 	cd client/web && dx build --release && cd -
 	docker cp ./client/web/dist mubdel-web:/var/web
 	docker cp ./target/release/web-server mubdel-web:/usr/bin/
