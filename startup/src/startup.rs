@@ -2,6 +2,7 @@ use async_graphql::{ObjectType, Result, Schema, SubscriptionType};
 use poem::{
     http::Method, listener::TcpListener, middleware::Cors, post, EndpointExt, Route, Server,
 };
+use solana_client::rpc_client::RpcClient;
 use tracing::info;
 use tracing_loki::url::Url;
 use tracing_subscriber::layer::SubscriberExt;
@@ -9,6 +10,7 @@ use tracing_subscriber::util::SubscriberInitExt;
 
 use cache::conn::{connect as connect_cache, Cache};
 use cfg::Config;
+use crypto::CryptoBuilder;
 use database::conn::{connect, DB};
 use errors::{fluent_messages, DiagCtx};
 use middleware::auth::authenticator;
@@ -124,6 +126,9 @@ where
             info!("setup payment gates successfully");
         }
 
+        let crypt_builder = self.build_crypto()?;
+        schema = schema.data(crypt_builder);
+
         Ok(schema.finish())
     }
 
@@ -146,5 +151,17 @@ where
             gate.stripe_secret.clone(),
             gate.stripe_wvt.clone(),
         ))
+    }
+
+    /// Build a crypto builder
+    fn build_crypto(&self) -> Result<CryptoBuilder> {
+        let cfg = self.cfg.solana_node()?;
+
+        let mut b = crypto::new();
+        let builder = b.set_solana_rpc(RpcClient::new(cfg.url.clone()));
+
+        builder.check()?;
+
+        Ok(builder.inst())
     }
 }

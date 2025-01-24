@@ -1,6 +1,7 @@
 use async_graphql::{Context, Result};
 
 use cache::conn::Cache;
+use crypto::CryptoBuilder;
 use database::conn::DB;
 use errors::DiagCtx;
 use payment_gate::stripe::Stripe;
@@ -38,5 +39,12 @@ pub fn get_stripe<'a>(ctx: &'a Context<'_>) -> Result<&'a Stripe> {
     match ctx.data::<Stripe>() {
         Ok(r) => Ok(r),
         Err(err) => Err(format!("stripe client not found: {}", err.message).into()),
+    }
+}
+
+pub fn get_crypto_builder<'a>(ctx: &'a Context<'_>) -> Result<&'a CryptoBuilder> {
+    match ctx.data::<CryptoBuilder>() {
+        Ok(r) => Ok(r),
+        Err(err) => Err(format!("crypto builder not found: {}", err.message).into()),
     }
 }

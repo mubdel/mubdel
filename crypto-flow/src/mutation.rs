@@ -2,7 +2,7 @@ use async_graphql::{Context, Object, Result};
 
 use crypto::CryptoCurrency;
 use errors::{errors as errs, gql_err};
-use helper::graphql::{get_db, get_diag, get_role};
+use helper::graphql::{get_crypto_builder, get_db, get_diag, get_role};
 use ty::{currency::CryptoCurrency as Currency, wallet::Wallet};
 
 #[derive(Copy, Clone)]
@@ -30,7 +30,10 @@ impl RootMutation {
             return Ok(wallet);
         }
 
-        let w = crypto::new(currency).create_wallet().await;
+        let cb = get_crypto_builder(ctx)?;
+        let crypto_inst = cb.build(currency)?;
+
+        let w = crypto_inst.create_wallet().await;
         // FIXME: Encrypt the private key
         let wallet = crypto_db
             .insert_wallet(user_id, symbol, w.public_key, w.private_key)
@@ -50,7 +53,10 @@ impl RootMutation {
 
         let db = get_db(ctx)?;
 
-        let w = crypto::new(currency).create_wallet().await;
+        let cb = get_crypto_builder(ctx)?;
+        let crypto_inst = cb.build(currency)?;
+
+        let w = crypto_inst.create_wallet().await;
         // FIXME: Encrypt the private key
         let symbol = currency.symbol().to_string();
         let wallet = db
@@ -59,5 +65,16 @@ impl RootMutation {
             .await?;
 
         Ok(wallet)
+    }
+
+    /// Parse transactions in a block
+    async fn parse_block(
+        &self,
+        ctx: &Context<'_>,
+        currency: Currency,
+        block_id: String,
+    ) -> Result<i32> {
+        // TODO
+        Ok(0)
     }
 }

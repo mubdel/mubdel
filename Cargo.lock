@@ -1538,6 +1538,7 @@ dependencies = [
  "anyhow",
  "solana-client",
  "solana-sdk",
+ "tracing",
  "ty",
 ]
 
@@ -3049,6 +3050,7 @@ version = "0.0.1"
 dependencies = [
  "async-graphql",
  "cache",
+ "crypto",
  "database",
  "errors",
  "payment-gate",
@@ -7730,11 +7732,13 @@ dependencies = [
  "async-graphql-poem",
  "cache",
  "cfg",
+ "crypto",
  "database",
  "errors",
  "middleware",
  "payment-gate",
  "poem",
+ "solana-client",
  "surrealdb",
  "tokio",
  "tracing",

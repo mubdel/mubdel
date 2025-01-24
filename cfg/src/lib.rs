@@ -15,6 +15,7 @@ pub struct Config {
     loki: Loki,
     email: Option<EmailCfg>,
     payment_gate: Option<PaymentGate>,
+    solana_node: Option<SolanaNode>,
 }
 
 #[derive(Clone, Deserialize)]
@@ -91,6 +92,12 @@ pub struct PaymentGate {
     pub stripe_wvt: String,
 }
 
+#[derive(Clone, Deserialize)]
+pub struct SolanaNode {
+    /// The Solana URL
+    pub url: String,
+}
+
 impl Config {
     pub fn load_cfg(path: String) -> Result<Self> {
         let s = read_to_string(path)?;
@@ -135,6 +142,13 @@ impl Config {
         match &self.payment_gate {
             Some(cfg) => Ok(cfg),
             None => Err(anyhow!("payment gate configuration not found")),
+        }
+    }
+
+    pub fn solana_node(&self) -> Result<&SolanaNode> {
+        match &self.solana_node {
+            Some(cfg) => Ok(cfg),
+            None => Err(anyhow!("solana node configuration not found")),
         }
     }
 }

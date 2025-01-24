@@ -15,3 +15,4 @@ errors = { workspace = true }
 cache = { workspace = true }
 ty = { workspace = true }
 payment-gate = { workspace = true }
+crypto = { workspace = true }
