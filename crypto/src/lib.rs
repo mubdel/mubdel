@@ -30,7 +30,7 @@ pub trait CryptoCurrency {
     fn parse_block(&self, block_id: String) -> impl Future<Output = Result<()>> + Send;
 }
 
-/// Used to build different crypto instance
+/// Used to build different crypto instances
 pub struct CryptoBuilder {
     solana_rpc_client: Option<Arc<RpcClient>>,
 }
@@ -49,6 +49,7 @@ impl CryptoBuilder {
         Ok(())
     }
 
+    /// Get a crypto builder instance
     pub fn inst(&self) -> CryptoBuilder {
         CryptoBuilder {
             solana_rpc_client: self.solana_rpc_client.clone(),
