@@ -115,7 +115,7 @@ where
 
     fn build_schema(&self, db: DB, cache: Cache, diag: DiagCtx) -> Result<Schema<Q, M, S>> {
         let mut schema = Schema::build(self.query, self.mutation, self.subscription)
-            .data(db)
+            .data(db.clone())
             .data(cache)
             .data(diag);
 
@@ -126,7 +126,7 @@ where
             info!("setup payment gates successfully");
         }
 
-        let crypt_builder = self.build_crypto()?;
+        let crypt_builder = self.build_crypto(db)?;
         schema = schema.data(crypt_builder);
 
         Ok(schema.finish())
@@ -154,11 +154,11 @@ where
     }
 
     /// Build a crypto builder
-    fn build_crypto(&self) -> Result<CryptoBuilder> {
+    fn build_crypto(&self, db: DB) -> Result<CryptoBuilder> {
         let cfg = self.cfg.solana_node()?;
 
         let mut b = crypto::new();
-        let builder = b.set_solana_rpc(RpcClient::new(cfg.url.clone()));
+        let builder = b.set_db(db).set_solana_rpc(RpcClient::new(cfg.url.clone()));
 
         builder.check()?;
 

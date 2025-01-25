@@ -1,0 +1,11 @@
+DEFINE FUNCTION fn::insert_deposit(
+	$user: string,
+	$wallet: string,
+	$amount: int,
+) {
+	RETURN CREATE deposit CONTENT {
+		user: <record<user>> $user,
+		wallet: <record<wallet>> $wallet,
+		amount: $amount,
+	};
+}

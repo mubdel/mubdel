@@ -1,7 +1,9 @@
 use anyhow::{anyhow, Result};
 use surrealdb::{engine::remote::ws::Client, Surreal};
 
+use ty::balance::Balance;
 use ty::block::Block;
+use ty::deposit::Deposit;
 use ty::wallet::Wallet;
 
 pub struct CryptoDatabase<'a> {
@@ -43,6 +45,16 @@ impl CryptoDatabase<'_> {
         Ok(r.take(0)?)
     }
 
+    pub async fn get_wallet_by_public_key(&self, public_key: String) -> Result<Option<Wallet>> {
+        let mut r = self
+            .db
+            .query("RETURN fn::get_wallet_by_public_key($public_key)")
+            .bind(("public_key", public_key))
+            .await?;
+
+        Ok(r.take(0)?)
+    }
+
     pub async fn get_block(&self, currency: String) -> Result<Option<Block>> {
         let mut r = self
             .db
@@ -67,5 +79,40 @@ impl CryptoDatabase<'_> {
             .await?;
 
         Ok(r.take(0)?)
+    }
+
+    pub async fn insert_deposit(
+        &self,
+        user: String,
+        wallet: String,
+        amount: u64,
+    ) -> Result<Deposit> {
+        let mut r = self
+            .db
+            .query("RETURN fn::insert_deposit($user, $currency, $amount)")
+            .bind(("user", user))
+            .bind(("wallet", wallet))
+            .bind(("amount", amount))
+            .await?;
+        let deposit: Option<Deposit> = r.take(0)?;
+        deposit.ok_or_else(|| anyhow!("insert deposit: none"))
+    }
+
+    pub async fn update_balance(
+        &self,
+        user: String,
+        currency: String,
+        amount: i32,
+    ) -> Result<Balance> {
+        let mut r = self
+            .db
+            .query("RETURN fn::update_balance($user, $currency, $amount)")
+            .bind(("user", user))
+            .bind(("currency", currency))
+            .bind(("amount", amount))
+            .await?;
+
+        let balance: Option<Balance> = r.take(0)?;
+        balance.ok_or_else(|| anyhow!("insert balance: none"))
     }
 }

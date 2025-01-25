@@ -1,0 +1,6 @@
+DEFINE FUNCTION fn::get_wallet_by_public_key(
+	$public_key: string,
+) {
+	RETURN SELECT * FROM wallet
+		WHERE public_key = $public_key;
+}

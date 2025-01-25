@@ -30,6 +30,7 @@ edition = "2021"
 [workspace.dependencies]
 solana-sdk = "2.1.0"
 solana-client = "2.1.0"
+solana-transaction-status-client-types = "2.1.11"
 anyhow = "1.0.92"
 dioxus = { version = "0.6.2", features = ["web", "router"] }
 web-sys = { version = "0.3.77", features = ["Storage"] }

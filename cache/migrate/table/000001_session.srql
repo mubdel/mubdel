@@ -1,6 +1,7 @@
 DEFINE TABLE session SCHEMAFULL;
 DEFINE FIELD secret ON TABLE session TYPE string;
-DEFINE INDEX session_secret_unique_index ON TABLE session COLUMNS secret UNIQUE;
 DEFINE FIELD user ON TABLE session TYPE string;
 DEFINE FIELD expires_on ON TABLE session TYPE datetime;
 DEFINE FIELD created_at ON TABLE session TYPE datetime DEFAULT time::now();
+
+DEFINE INDEX session_secret_unique_index ON TABLE session COLUMNS secret UNIQUE;

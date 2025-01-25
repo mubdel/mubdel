@@ -1,0 +1,9 @@
+DEFINE FUNCTION fn::update_balance(
+	$user: string,
+	$currency: string,
+	$amount: int,
+) {
+	RETURN UPDATE balance SET amount = amount + $amount
+		WHERE user = $user AND currency = $currency
+		RETURN *;
+}

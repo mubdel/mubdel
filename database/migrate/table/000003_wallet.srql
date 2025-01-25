@@ -4,3 +4,7 @@ DEFINE FIELD currency ON TABLE wallet TYPE string;
 DEFINE FIELD public_address ON TABLE wallet TYPE string;
 DEFINE FIELD private_address ON TABLE wallet TYPE string;
 DEFINE FIELD created_at ON TABLE wallet TYPE datetime DEFAULT time::now();
+
+DEFINE INDEX wallet_user ON TABLE wallet COLUMNS user;
+DEFINE INDEX wallet_currency ON TABLE wallet COLUMNS currency;
+DEFINE INDEX wallet_public_address ON TABLE wallet COLUMNS public_address;
