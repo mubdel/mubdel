@@ -6,6 +6,7 @@ use solana_client::rpc_client::RpcClient;
 use tracing::error;
 
 use solana::Solana;
+use ty::block::BlockStatistics;
 use ty::currency::CryptoCurrency as Currency;
 
 pub mod solana;
@@ -27,7 +28,8 @@ pub trait CryptoCurrency {
         amount: u64,
     ) -> impl Future<Output = Result<()>> + Send;
     /// Parse transactions in a block
-    fn parse_block(&self, block_id: String) -> impl Future<Output = Result<()>> + Send;
+    fn parse_block(&self, block_id: String)
+        -> impl Future<Output = Result<BlockStatistics>> + Send;
 }
 
 /// Used to build different crypto instances

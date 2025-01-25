@@ -4,6 +4,7 @@ use poem::{FromRequest, Request, RequestBody, Result};
 pub enum Role {
     Guest,
     User(UserRole),
+    System, // TODO
 }
 
 #[derive(Clone)]
@@ -22,6 +23,10 @@ impl Role {
             Self::User(u) => (true, Some(u.clone())),
             _ => (false, None),
         }
+    }
+
+    pub fn is_system(&self) -> bool {
+        matches!(self, Role::System)
     }
 }
 

@@ -15,3 +15,13 @@ pub struct Block {
     #[graphql(skip)]
     pub created_at: Datetime,
 }
+
+/// Block statistics
+#[derive(Debug, Serialize, Deserialize, SimpleObject, InputObject)]
+#[graphql(input_name = "block_statistics_input")]
+pub struct BlockStatistics {
+    /// The number of transactions in the block associated with our wallets
+    pub number_of_transactions: u64,
+    /// The total amount received in the block
+    pub received_amount: u64,
+}

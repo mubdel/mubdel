@@ -5,6 +5,8 @@ use anyhow::Result;
 use solana_client::rpc_client::RpcClient;
 use solana_sdk::{pubkey::Pubkey, signature::Keypair, signer::Signer, system_transaction};
 
+use ty::block::BlockStatistics;
+
 use crate::{CryptoCurrency, Wallet};
 
 pub struct Solana {
@@ -36,7 +38,11 @@ impl CryptoCurrency for Solana {
         Ok(())
     }
 
-    async fn parse_block(&self, block_id: String) -> Result<()> {
-        Ok(())
+    async fn parse_block(&self, block_id: String) -> Result<BlockStatistics> {
+        // TODO
+        Ok(BlockStatistics {
+            number_of_transactions: 0,
+            received_amount: 0,
+        })
     }
 }

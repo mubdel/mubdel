@@ -3,7 +3,7 @@ use async_graphql::{Context, Object, Result};
 use crypto::CryptoCurrency;
 use errors::{errors as errs, gql_err};
 use helper::graphql::{get_crypto_builder, get_db, get_diag, get_role};
-use ty::{currency::CryptoCurrency as Currency, wallet::Wallet};
+use ty::{block::BlockStatistics, currency::CryptoCurrency as Currency, wallet::Wallet};
 
 #[derive(Copy, Clone)]
 pub struct RootMutation;
@@ -73,8 +73,18 @@ impl RootMutation {
         ctx: &Context<'_>,
         currency: Currency,
         block_id: String,
-    ) -> Result<i32> {
-        // TODO
-        Ok(0)
+    ) -> Result<BlockStatistics> {
+        let role = get_role(ctx)?;
+        let diag = get_diag(ctx)?;
+        if !role.is_system() {
+            gql_err!(diag, errs::Unauthorized {});
+        }
+
+        let cb = get_crypto_builder(ctx)?;
+        let crypto_inst = cb.build(currency)?;
+
+        let statistics = crypto_inst.parse_block(block_id).await?;
+
+        Ok(statistics)
     }
 }
